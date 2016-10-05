@@ -23,6 +23,7 @@ public class RestaurantsOverviewActivity extends AppCompatActivity {
             case MotionEvent.ACTION_DOWN:
                 x1 = event.getX();
                 break;
+            case MotionEvent.ACTION_UP:
                 x2 = event.getX();
                 float deltaX = x2 - x1;
                 if (Math.abs(deltaX) > MIN_DISTANCE)
