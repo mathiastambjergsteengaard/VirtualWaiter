@@ -16,7 +16,7 @@ import com.example.solveigdoan.theappproject.MyService.RestaurantBinder;
 public class MenuOverviewActivity extends AppCompatActivity {
     ListView custom_listView;
     CustomAdapter customAdapter;
-    //String[] foods;
+    
     private String[] foods = {"Husets brunch", "Husets burger", "Baconburger", "Kyllingburger", "Husets kartofler", "Pommes fritter",
             "Club sandwich", "Bøf sandwich", "Nicoise salat", "Caesar salat", "Nachos", "Dagens Suppe", "Choko Fondant", "Cheesecake", "dagens frugt",
             "Sodavand", "Kaffe/te", "Rød/Hvid vin", "Fadøl"};
@@ -33,18 +33,13 @@ public class MenuOverviewActivity extends AppCompatActivity {
 
         customListView = (ListView) findViewById(R.id.custom_listview);
         Button visMenuButton = (Button) findViewById(R.id.buttonVisMenu);
-        //Intent i = new Intent (this, MyService.class);
-        // bindService(i, restaurantConnection, Context.BIND_AUTO_CREATE);
-
-
+      
         visMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (isBound) {
 
-                    //custom_listView = (ListView)findViewById(R.id.custom_listView);
                     customAdapter = new CustomAdapter(MenuOverviewActivity.this, foods);
-                    //custom_listView.setAdapter(customAdapter);
                     customListView.setAdapter(customAdapter);
                 }
             }
@@ -56,8 +51,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, MyService.class);
-        //     startService(intent);
+        Intent intent = new Intent(this, MyService.class);   
         bindService(intent, restaurantConnection, Context.BIND_AUTO_CREATE);
     }
 
