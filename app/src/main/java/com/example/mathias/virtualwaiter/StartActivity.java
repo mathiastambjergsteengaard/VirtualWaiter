@@ -2,12 +2,19 @@ package com.example.mathias.virtualwaiter;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class StartActivity extends AppCompatActivity {
     private float x1,x2;
@@ -19,13 +26,8 @@ public class StartActivity extends AppCompatActivity {
     }
 
     protected void click(View view){
-        FoodProfileDBHelper db  = new FoodProfileDBHelper(StartActivity.this);
-        db.openDB();
-        db.insert("Goddaw");
-        Cursor cursor = db.getById(1);
-        boolean he = cursor.move(1);
-        Log.d("dasd", cursor.getString(3));
-        Log.d("dasd", Integer.toString(MenuItemTags.CHICKEN));
+        SuggestionTimerThread t = new SuggestionTimerThread(StartActivity.this);
+        new Thread(t).start();
     }
     //heavily inspired from http://stackoverflow.com/questions/6645537/how-to-detect-the-swipe-left-or-right-in-android
     @Override

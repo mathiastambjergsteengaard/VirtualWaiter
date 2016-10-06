@@ -18,6 +18,7 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
     private static final String PRICE = "price";
     private static final String TAG = "tag";
     private static final String NAME = "name";
+    private static final String RESTAURANT_ID = "restaurant_id";
 
 
     private SQLiteDatabase foodProfileDB;
@@ -28,14 +29,22 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String query = "CREATE TABLE " + TABLE_NAME
+        String menu_item_query = "CREATE TABLE " + TABLE_NAME
                 + " (" +
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 PRICE + " FLOAT, " +
                 TAG + " INTEGER, " +
                 NAME + " TEXT" +
+                RESTAURANT_ID + " INTEGER" +
                 ")";
-        db.execSQL(query);
+        db.execSQL(menu_item_query);
+        String restuarant_query = "CREATE TABLE " + TABLE_NAME
+                + " (" +
+                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                NAME + " TEXT" +
+                ")";
+        db.execSQL(restuarant_query);
+
     }
 
     @Override
@@ -53,9 +62,12 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
             foodProfileDB.close();
         }
     }
-    public void insert(String name){
+    public void insertMenuItem(MenuItem item){
         ContentValues values = new ContentValues();
-        values.put(NAME,name);
+        values.put(NAME,item.Name);
+        values.put(PRICE,item.Price);
+        values.put(TAG,item.Tag);
+        values.put(RESTAURANT_ID, item.RestaurantID);
         foodProfileDB.insert(TABLE_NAME,null, values);
     }
 

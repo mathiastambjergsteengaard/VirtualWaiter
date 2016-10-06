@@ -36,12 +36,12 @@ public class SuggestionService extends Service {
         }
         return super.onStartCommand(intent, flags, startId);
     }
-    public MenuItem getSuggestionBasedOnRestaurant(int restaurant_id){
+/*    public MenuItem getSuggestionBasedOnRestaurant(int restaurant_id){
         Log.d("Action","getCurrentWeather - WeatherService");
         return dbHelper.getCurrentWeather();
     }
-    public int getRestaurantIdBasedOn(){
+    public int getRestaurantIdBasedOnLocation(){
         Log.d("Action","getPastWeather - WeatherService");
         return dbHelper.getAllWeatherData();
-    }
+    }*/
 }

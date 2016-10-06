@@ -7,6 +7,7 @@ public class MenuItem {
     public float Price;
     public String Name;
     public int Tag;
+    public int RestaurantID;
 }
 
 
