@@ -18,7 +18,7 @@
         <activity android:name=".RestaurantsOverviewActivity" />
         <activity android:name=".MenuOverviewActivity" />
         <activity android:name=".OrderConfirmationActivity" />
-        <activity android:name=".RestaurantService" >
+        <activity android:name=".SuggestionService" >
         </activity>
     </application>
 
