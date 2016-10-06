@@ -32,7 +32,7 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
                 + " (" +
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 PRICE + " FLOAT, " +
-                TAG + " TEXT, " +
+                TAG + " INTEGER, " +
                 NAME + " TEXT" +
                 ")";
         db.execSQL(query);

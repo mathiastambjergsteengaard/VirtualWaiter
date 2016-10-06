@@ -25,6 +25,7 @@ public class StartActivity extends AppCompatActivity {
         Cursor cursor = db.getById(1);
         boolean he = cursor.move(1);
         Log.d("dasd", cursor.getString(3));
+        Log.d("dasd", Integer.toString(MenuItemTags.CHICKEN));
     }
     //heavily inspired from http://stackoverflow.com/questions/6645537/how-to-detect-the-swipe-left-or-right-in-android
     @Override

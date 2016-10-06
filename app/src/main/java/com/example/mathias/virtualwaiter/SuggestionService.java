@@ -13,6 +13,7 @@ public class SuggestionService extends Service {
 
     private ServiceBinder ServiceBinder = new ServiceBinder();
     FoodProfileDBHelper dbHelper;
+
     public class ServiceBinder extends Binder {
         public SuggestionService getService() {
             return SuggestionService.this;
@@ -20,7 +21,7 @@ public class SuggestionService extends Service {
     }
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d("Action", "Binding to Weather service");
+        Log.d("Action", "Binding to service");
         return ServiceBinder;
     }
 
@@ -28,15 +29,18 @@ public class SuggestionService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("Action", "onStartCommand - weatherService");
         dbHelper = new FoodProfileDBHelper(this);
-        RetrieveDataThread bk = new RetrieveDataThread(getApplicationContext());
-        new Thread(bk).start();
+        if(!started) {
+            SuggestionTimerThread bk = new SuggestionTimerThread(getApplicationContext());
+            new Thread(bk).start();
+            started = true;
+        }
         return super.onStartCommand(intent, flags, startId);
     }
-    public WeatherInfo getCurrentWeather(){
+    public MenuItem getSuggestionBasedOnRestaurant(int restaurant_id){
         Log.d("Action","getCurrentWeather - WeatherService");
         return dbHelper.getCurrentWeather();
     }
-    public List<WeatherInfo> getPastWeather(){
+    public int getRestaurantIdBasedOn(){
         Log.d("Action","getPastWeather - WeatherService");
         return dbHelper.getAllWeatherData();
     }
