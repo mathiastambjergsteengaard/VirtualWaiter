@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
-import com.example.solveigdoan.theappproject.MyService.RestaurantBinder;
 
 
 public class MenuOverviewActivity extends AppCompatActivity {
@@ -22,14 +21,14 @@ public class MenuOverviewActivity extends AppCompatActivity {
             "Sodavand", "Kaffe/te", "Rød/Hvid vin", "Fadøl"};
 
 
-    MyService foodService;
+    MenuService foodService;
     Boolean isBound = false;
     ListView customListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_start);
 
         customListView = (ListView) findViewById(R.id.custom_listview);
         Button visMenuButton = (Button) findViewById(R.id.buttonVisMenu);
@@ -51,7 +50,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        Intent intent = new Intent(this, MyService.class);   
+        Intent intent = new Intent(this, MenuService.class);
         bindService(intent, restaurantConnection, Context.BIND_AUTO_CREATE);
     }
 
@@ -68,7 +67,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
 
-            MyService.RestaurantBinder binder = (MyService.RestaurantBinder) service;
+            MenuService.RestaurantBinder binder = (MenuService.RestaurantBinder) service;
             foodService = binder.getService();
             isBound= true;
         }
