@@ -22,12 +22,9 @@ public class SuggestionTimerThread implements Runnable {
         context_ = context;
     }
 
-
-
     @Override
     public void run() {
-
-        /*while(true) {
+        while(true) {
             try {
                 Log.d("hej", "Wait for 10 sec");
                 Intent broadCastIntent = new Intent();
@@ -38,6 +35,6 @@ public class SuggestionTimerThread implements Runnable {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-        }*/
+        }
     }
 }

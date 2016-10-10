@@ -12,6 +12,7 @@ import java.net.URL;
 /**
  * Created by mathias on 06/10/16.
  */
+//Bruges til at hente den falske database i form a json string
 public class ExternDBStub {
     private String MenuDBStubURL = "https://raw.githubusercontent.com/mathiastambjergsteengaard/VirtualWaiter/master/menus";
     private String RestaurantDBStubURL = "https://raw.githubusercontent.com/mathiastambjergsteengaard/VirtualWaiter/master/restaurants";
