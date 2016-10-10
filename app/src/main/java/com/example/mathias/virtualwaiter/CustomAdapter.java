@@ -25,24 +25,22 @@ public class CustomAdapter extends ArrayAdapter<String>  {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // default -  return super.getView(position, convertView, parent);
-        // add the layout
+       
+        // adding layout
         LayoutInflater myCustomInflater = LayoutInflater.from(getContext());
         View customView = myCustomInflater.inflate(R.layout.custom_row, parent, false);
-        // get references.
+        // getting references
         String singleFoodItem = getItem(position);
         TextView itemText = (TextView) customView.findViewById(R.id.foodText);
         ImageView addIcon = (ImageView) customView.findViewById(R.id.addButton);
         ImageView removeIcon = (ImageView) customView.findViewById(R.id.removeButton);
-        //ImageView timeIcon = (ImageView) customView.findViewById(R.id.timeButton);
-
-        // dynamically update the text from the array
+        
+        // updating text from the array
         itemText.setText(singleFoodItem);
-        // using the same image every time
+        // same icons in every row
         addIcon.setImageResource(R.mipmap.pluss);
         removeIcon.setImageResource(R.mipmap.fjern);
-        //timeIcon.setImageResource(R.mipmap.tid);
-        // Now we can finally return our custom View or custom item
+      
         return customView;
     }
 }

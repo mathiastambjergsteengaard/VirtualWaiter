@@ -19,14 +19,11 @@ public class MenuService extends Service {
         super.onCreate();
         Log.v(LOG_TAG, "in onCreate");
     }
-
-
     @Override
     public IBinder onBind(Intent intent) {
-        // Return the communication channel to the service.
+        // Returning communication channel to service.
         Log.v(LOG_TAG, "in onBind");
         return foodListBinder;
-
     }
     @Override
     public void onRebind(Intent intent) {
@@ -46,14 +43,11 @@ public class MenuService extends Service {
         Log.v(LOG_TAG, "in onDestroy");
     }
 
-
-    //Hvad skal service gøre...
-
-    public class RestaurantBinder extends Binder{  //returning reference to MenuService to get access to all its methods
+    public class RestaurantBinder extends Binder{ 
 
         MenuService getService() {
 
-            return MenuService.this;
+            return MenuService.this;  //returning reference to MenuService to get access to all its methods
         }
 
 

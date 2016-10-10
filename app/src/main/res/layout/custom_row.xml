@@ -11,7 +11,9 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Large Text"
         android:id="@+id/foodText"
-        android:layout_marginTop="10dp" />
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textColor="#0000A0" />
 
     <ImageButton
         android:layout_width="40dp"
@@ -27,9 +29,10 @@
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:id="@+id/removeButton"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="5dp"
         android:src="@mipmap/fjern"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
+
