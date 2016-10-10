@@ -17,8 +17,10 @@ public class MenuOverviewActivity extends AppCompatActivity {
     CustomAdapter customAdapter;
     
     private String[] foods = {"Husets brunch", "Husets burger", "Baconburger", "Kyllingburger", "Husets kartofler", "Pommes fritter",
-            "Club sandwich", "Bøf sandwich", "Nicoise salat", "Caesar salat", "Nachos", "Dagens Suppe", "Choko Fondant", "Cheesecake", "dagens frugt",
-            "Sodavand", "Kaffe/te", "Rød/Hvid vin", "Fadøl"};
+            "Club sandwich", "Bøf sandwich", "Nicoise salat", "Caesar salat", "Croque monsieur", "Rørt Tatar", "Nachos", "Dagens Suppe", "Choko Fondant",
+            "Cheesecake","Quiche","Pariserbøf","Poussin","Jomfruhummer","Pasta med trøffel","Snackbræt","Moules Marinière",
+            "dagens frugt","Dagens ost","Crème Brûlée", "Crêpes Suzette","Espresso", "Cortado", "Nikoline juice", "Smoothie",
+            "Sodavand", "Mineralvand", "Rødvin","Rosévin","Hvidvin","Champagne","Cava", "Murphys Red","Heineken", "Royal Classic"};
 
 
     MenuService foodService;
