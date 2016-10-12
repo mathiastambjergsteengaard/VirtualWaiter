@@ -39,9 +39,9 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         }
         else {
             orderList = savedInstanceState.getParcelableArrayList("orderlist");
-            Log.d("sdgd", orderList.get(2).Name);
             updateView();
         }
+        fillOrderList();
     }
 
     private String getAccPrice(){
@@ -62,8 +62,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     }
 
     void onCheckOutClick(View view){
-        fillOrderList();
-        updateView();
+
     }
 
     private void updateView(){
