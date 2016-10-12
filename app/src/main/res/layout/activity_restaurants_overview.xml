@@ -18,7 +18,7 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textColor="#0000A0"
-        android:textSize="25sp"
+        android:textSize="50sp"
         android:textStyle="bold" />
 
     <ListView
@@ -27,5 +27,8 @@
         android:id="@+id/list_restaurant_overview"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/restaurantsOverview"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="60dp"
+        android:layout_alignParentBottom="true"
+        android:background="@mipmap/front_logo" />
 </RelativeLayout>
