@@ -7,19 +7,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.mathias.virtualwaiter.StartActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    tools:context="com.example.mathias.virtualwaiter.StartActivity"
+    android:background="@mipmap/forside">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button2"
+        android:text="@string/find_restaurants"
+        android:id="@+id/buttonFindRestaurant"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:onClick="click" />
+        android:onClick="click"
+        android:background="#0000A0"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:textSize="20sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/google_logo"
+        android:src="@mipmap/powered_by"
+        android:contentDescription="@string/povered_by_google"
+        android:layout_below="@+id/buttonFindRestaurant"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40sp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/front_logo"
+        android:src="@mipmap/front_logo"
+        android:layout_above="@+id/buttonFindRestaurant"
+        android:layout_centerHorizontal="true"
+        android:contentDescription="@string/front_logo" />
+
 </RelativeLayout>

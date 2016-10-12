@@ -1,6 +1,7 @@
 package com.example.mathias.virtualwaiter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Parcelable;
@@ -23,11 +24,14 @@ import java.util.List;
 
 public class OrderConfirmationActivity extends AppCompatActivity {
     private List<MenuItem> orderList;
-
+    MapsLocation mapsLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int orientation = this.getResources().getConfiguration().orientation;
+        Intent intent = new Intent(this,MapsLocation.class);
+
+
         if(Configuration.ORIENTATION_PORTRAIT == orientation) {
             setContentView(R.layout.activity_order_confirmation);
         }else{

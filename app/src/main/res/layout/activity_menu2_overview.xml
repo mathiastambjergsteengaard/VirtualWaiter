@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@mipmap/menu"
+    tools:context="com.example.mathias.virtualwaiter.Menu2OverviewActivity">
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/vis_menu"
+        android:id="@+id/buttonVismenuRest1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:backgroundTint="#0000A0"
+        android:textStyle="bold"
+        android:textColor="#ffffff" />
+
+    <ListView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/custom_listview"
+        android:layout_below="@+id/buttonVismenuRest1"
+        android:layout_centerHorizontal="true"
+        android:choiceMode="multipleChoice" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/din_ordre"
+        android:id="@+id/buttonVisOrdreRest1"
+        android:layout_above="@+id/custom_listview"
+        android:layout_alignParentEnd="true"
+        android:backgroundTint="#0000A0"
+        android:textStyle="bold"
+        android:textColor="#ffffff" />
+
+</RelativeLayout>

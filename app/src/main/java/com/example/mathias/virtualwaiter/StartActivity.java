@@ -19,9 +19,11 @@ import java.net.URL;
 public class StartActivity extends AppCompatActivity {
     private float x1,x2;
     static final int MIN_DISTANCE = 150;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_start);
     }
 
