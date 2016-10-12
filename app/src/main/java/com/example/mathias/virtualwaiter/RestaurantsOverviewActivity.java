@@ -4,14 +4,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RestaurantsOverviewActivity extends AppCompatActivity {
     private float x1,x2;
     static final int MIN_DISTANCE = 150;
     
-     private ListView list_restaurants_overview;
+    private ListView list_restaurants_overview;
     private RestaurantListAdapter adapter;
-    private List <RestaurantModel> RestaurantModelList;
+    private List<RestaurantModel> RestaurantModelList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
