@@ -11,6 +11,7 @@
     android:background="@mipmap/forside">
 
     <Button
+        style="@style/ButtonsXL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/find_restaurants"
@@ -18,10 +19,6 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:onClick="click"
-        android:background="#0000A0"
-        android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:textSize="50sp"
         android:lines="2" />
 
     <ImageView
@@ -29,7 +26,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/google_logo"
         android:src="@mipmap/powered_by"
-
         android:layout_marginBottom="77dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
@@ -39,14 +35,12 @@
         android:layout_height="wrap_content"
         android:id="@+id/front_logo"
         android:src="@mipmap/front_logo"
-
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/slogan"
         android:id="@+id/slogan"
         android:layout_below="@+id/front_logo"
