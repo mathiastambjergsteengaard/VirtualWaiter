@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteQuery;
+import android.util.Log;
 
 /**
  * Created by mathias on 03/10/16.
@@ -34,21 +36,14 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
                 ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 PRICE + " FLOAT, " +
                 TAG + " INTEGER, " +
-                NAME + " TEXT" +
+                NAME + " TEXT," +
                 RESTAURANT_ID + " INTEGER" +
                 ")";
         db.execSQL(menu_item_query);
-        String restuarant_query = "CREATE TABLE " + TABLE_NAME
-                + " (" +
-                ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                NAME + " TEXT" +
-                ")";
-        db.execSQL(restuarant_query);
-
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
 
     }
 
@@ -63,17 +58,25 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
         }
     }
     public void insertMenuItem(MenuItem item){
+        openDB();
         ContentValues values = new ContentValues();
         values.put(NAME,item.Name);
         values.put(PRICE,item.Price);
         values.put(TAG,item.Tag);
         values.put(RESTAURANT_ID, item.RestaurantID);
         foodProfileDB.insert(TABLE_NAME,null, values);
+        closeDB();
     }
 
-    public Cursor getById(int id){
-        String query = "SELECT * FROM " + TABLE_NAME;
-        return foodProfileDB.rawQuery(query,null);
+    public int getMostCommonTag(int id){
+        openDB();
+        //http://stackoverflow.com/questions/9853671/sql-select-most-common-values
+        String query = "select " + TAG + " from " + TABLE_NAME + " group by " + TAG + " having count(*) = ( select count(*) from "  + TABLE_NAME + " group by " + TAG + " order by count(*) desc limit 1)";
+        Cursor cursor = foodProfileDB.rawQuery(query,null);
+        cursor.moveToFirst();
+        Log.d("Tag", Integer.toString(cursor.getColumnIndex(TAG)));
+        closeDB();
+        return cursor.getColumnIndex(TAG);
     }
 
 }

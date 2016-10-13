@@ -25,6 +25,9 @@ public class StartActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_start);
+        if(getIntent().getBooleanExtra(Constants.ORDER_PLACED, true)){
+            Toast.makeText(this, "Din ordre er sent afsted", Toast.LENGTH_LONG).show();
+        }
     }
 
     protected void click(View view){
