@@ -1,14 +1,15 @@
 <resources>
-    <string name="app_name">VirtualWaiter</string>
-    <string name="vis_menu"></string>
-    <string name="din_ordre"></string>
-    <string name="restaurants_nearby"></string>
-    <string name="find_restaurants"></string>
-    <string name="contentDescription"></string>
-    <string name="front_logo"></string>
-    <string name="name"></string>
-    <string name="distance"></string>
-    <string name="number_of_visits"></string>
-    <string name="povered_by_google"></string>
+    <string name="app_name">The Virtual Waiter</string>
+    <string name="show_menu">Vis menu</string>
+    <string name="your_order">Din ordre</string>
+    <string name="restaurants_nearby">Restauranter nær dig</string>
+    <string name="find_restaurants">Find restaurant</string>
+    <string name="name">Navn</string>
+    <string name="distance">Afstand</string>
+    <string name="number_of_visits">Antal besøg</string>
+    <string name="at_betale">Totalt at betale:</string>
+    <string name="place_order">Bestil ordren</string>
+    <string name="slogan">The Virtual Waiter</string>
+
 
 </resources>
