@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/foodText"
+        android:layout_marginTop="60dp"
+        android:textStyle="bold"
+        android:textColor="#0000A0"
+        android:textSize="50dp" />
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/addButton"
+        android:src="@mipmap/pluss"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/removeButton"
+        android:layout_marginTop="60dp" />
+
+    <ImageButton
+
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:id="@+id/removeButton"
+        android:layout_marginLeft="15dp"
+        android:src="@mipmap/fjern"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="60dp" />
+
+</RelativeLayout>
