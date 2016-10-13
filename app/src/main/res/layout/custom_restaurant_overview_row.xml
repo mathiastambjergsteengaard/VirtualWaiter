@@ -2,10 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/customRow"
     android:weightSum="1">
 
 
+
     <TextView
+        style="@style/customRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -17,24 +20,24 @@
         android:textColor="#0000A0" />
 
     <TextView
+        style="@style/customRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/distance"
         android:id="@+id/restaurant_distance"
         android:layout_alignBottom="@+id/restaurant_visits"
-        android:layout_marginLeft="170dp"
+        android:layout_marginLeft="140dp"
         android:layout_marginTop="5dp"
-        android:textColor="#0000A0" />
+         />
 
     <TextView
+        style="@style/customRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/number_of_visits"
         android:id="@+id/restaurant_visits"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="5dp"
-        android:textColor="#0000A0" />
+         />
 </RelativeLayout>
