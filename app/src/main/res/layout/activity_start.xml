@@ -28,7 +28,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/google_logo"
         android:src="@mipmap/powered_by"
-        android:contentDescription="@string/povered_by_google"
         android:layout_below="@+id/buttonFindRestaurant"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40sp" />
@@ -40,6 +39,6 @@
         android:src="@mipmap/front_logo"
         android:layout_above="@+id/buttonFindRestaurant"
         android:layout_centerHorizontal="true"
-        android:contentDescription="@string/front_logo" />
+         />
 
 </RelativeLayout>
