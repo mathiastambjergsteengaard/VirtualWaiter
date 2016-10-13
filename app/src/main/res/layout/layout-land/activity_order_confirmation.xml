@@ -19,20 +19,21 @@
 
 
         <Button
+            style="@style/Buttons"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/place_order"
             android:id="@+id/button"
             android:padding="20dp"
-            android:textSize="30sp"
             android:onClick="onCheckOutClick"
             android:layout_gravity="bottom"
             android:textColor="#ffffff"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:background="#0000A0" />
+             />
 
         <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/at_betale"
