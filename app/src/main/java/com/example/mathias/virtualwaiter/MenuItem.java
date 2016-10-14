@@ -10,12 +10,15 @@ public class MenuItem implements Parcelable{
     public float Price;
     public String Name;
     public int Tag;
+    public boolean Chosen;
     public int RestaurantID;
 
     protected MenuItem(Parcel in) {
         Price = in.readFloat();
         Name = in.readString();
         Tag = in.readInt();
+        //http://stackoverflow.com/questions/6201311/how-to-read-write-a-boolean-when-implementing-the-parcelable-interface
+        Chosen = in.readByte() != 0;
         RestaurantID = in.readInt();
     }
 
@@ -24,6 +27,7 @@ public class MenuItem implements Parcelable{
         Name = "";
         Tag = 0;
         RestaurantID = 0;
+        Chosen = false;
     }
 
 
@@ -49,6 +53,8 @@ public class MenuItem implements Parcelable{
         parcel.writeFloat(Price);
         parcel.writeString(Name);
         parcel.writeInt(Tag);
+        //http://stackoverflow.com/questions/6201311/how-to-read-write-a-boolean-when-implementing-the-parcelable-interface
+        parcel.writeByte((byte) (Chosen ? 1 : 0));
         parcel.writeInt(RestaurantID);
     }
 }

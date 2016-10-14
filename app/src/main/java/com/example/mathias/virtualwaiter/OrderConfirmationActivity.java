@@ -31,23 +31,22 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        int orientation = this.getResources().getConfiguration().orientation;
+        setContentView(R.layout.activity_order_confirmation);
         Intent intent = new Intent(this,MapsLocation.class);
 
-
-        if(Configuration.ORIENTATION_PORTRAIT == orientation) {
-            setContentView(R.layout.activity_order_confirmation);
-        }else{
-            setContentView(R.layout.activity_order_confirmation_landscape);
-        }
         //http://stackoverflow.com/questions/12503836/how-to-save-custom-arraylist-on-android-screen-rotate
-        if(savedInstanceState == null || !savedInstanceState.containsKey("orderlist")) {
-            orderList = new ArrayList<MenuItem>();
+        if(savedInstanceState == null || !savedInstanceState.containsKey(Constants.ORDER_LIST)) {
+            List<MenuItem> restaurantMenu = getIntent().getBundleExtra(Constants.RESTAURANT_MENU).getParcelableArrayList(Constants.ORDER_LIST);
+            orderList = new ArrayList<>();
+            for(MenuItem temp: restaurantMenu){
+                if(temp.Chosen){
+                    orderList.add(temp);
+                }
+            }
         }
         else {
-            orderList = savedInstanceState.getParcelableArrayList("orderlist");
+            orderList = savedInstanceState.getParcelableArrayList(Constants.ORDER_LIST);
         }
-        fillOrderList();
         updateView();
     }
 
@@ -65,7 +64,7 @@ public class OrderConfirmationActivity extends AppCompatActivity {
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList("orderlist", (ArrayList<? extends Parcelable>) orderList);
+        outState.putParcelableArrayList(Constants.ORDER_LIST, (ArrayList<? extends Parcelable>) orderList);
     }
 
     void onCheckOutClick(View view){
@@ -104,6 +103,9 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         }
     };
 
+    void onBackBtnClick(View view){
+        finish();
+    }
 
     private void updateView(){
         TextView txt = (TextView) findViewById(R.id.textView);
@@ -128,49 +130,4 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         }
     }
 
-    private void fillOrderList(){
-        MenuItem mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi); mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-        mi = new MenuItem();
-        mi.Price = (float)2.34;
-        mi.Name = "heehhej";
-        orderList.add(mi);
-    }
 }

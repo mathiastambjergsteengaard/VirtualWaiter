@@ -6,4 +6,6 @@ package com.example.mathias.virtualwaiter;
 
 class Constants {
     static final String ORDER_PLACED = "order_placed";
+    static final String RESTAURANT_MENU = "restaurant_menu";
+    static final String ORDER_LIST = "orderlist";
 }
