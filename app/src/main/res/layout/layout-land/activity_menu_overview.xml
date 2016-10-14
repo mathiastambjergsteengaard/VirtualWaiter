@@ -9,15 +9,14 @@
 
 
     <Button
+        style="@style/listViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Vis menu"
         android:id="@+id/buttonVisMenu"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:backgroundTint="#0000A0"
-        android:textStyle="bold"
-        android:textColor="#ffffff" />
+         />
 
     <ListView
         android:layout_width="wrap_content"
@@ -29,14 +28,12 @@
         android:layout_marginTop="20dp" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
+        style="@style/listViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Din ordre"
+        android:text="@string/your_order"
         android:id="@+id/buttonVisOrdre"
         android:layout_above="@+id/custom_listview"
         android:layout_alignEnd="@+id/custom_listview"
-        android:backgroundTint="#0000A0"
-        android:textStyle="bold"
-        android:textColor="#ffffff" />
+        />
 </RelativeLayout>

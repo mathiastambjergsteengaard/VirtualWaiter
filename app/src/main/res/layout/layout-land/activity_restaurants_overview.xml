@@ -11,9 +11,9 @@
     android:background="@mipmap/front_logo">
 
     <TextView
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/restaurants_nearby"
         android:id="@+id/restaurantsOverview"
         android:layout_alignParentTop="true"
@@ -31,3 +31,4 @@
         android:layout_alignParentStart="true"
         android:layout_marginTop="20dp" />
 </RelativeLayout>
+

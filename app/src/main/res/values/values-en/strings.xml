@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">The Virtual Waiter</string>
+    <string name="at_betale">Total amount:</string>
+    <string name="distance">Distance</string>
+    <string name="find_restaurants">Find restaurants</string>
+    <string name="name">Name</string>
+    <string name="number_of_visits">Previous visits</string>
+    <string name="place_order">Place Order</string>
+    <string name="restaurants_nearby">Restaurants nearby</string>
+    <string name="show_menu">Show menu</string>
+    <string name="your_order">Current order</string>
+</resources>
