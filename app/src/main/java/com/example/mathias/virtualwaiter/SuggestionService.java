@@ -22,11 +22,6 @@ public class SuggestionService extends Service {
     @Override
     public IBinder onBind(Intent intent) {
         Log.d("Action", "Binding to service");
-        return ServiceBinder;
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
         Log.d("Action", "onStartCommand - weatherService");
         dbHelper = new FoodProfileDBHelper(this);
         if(!started) {
@@ -34,7 +29,10 @@ public class SuggestionService extends Service {
             new Thread(bk).start();
             started = true;
         }
-        return super.onStartCommand(intent, flags, startId);
+        return ServiceBinder;
     }
 
+    public int getMostCommonTagById(int restaurant_id){
+        return dbHelper.getMostCommonTag(restaurant_id);
+    }
 }

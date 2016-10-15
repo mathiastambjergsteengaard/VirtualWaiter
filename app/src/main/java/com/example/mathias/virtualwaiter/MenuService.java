@@ -43,8 +43,7 @@ public class MenuService extends Service {
         Log.v(LOG_TAG, "in onDestroy");
     }
 
-    public class RestaurantBinder extends Binder{ 
-
+    public class RestaurantBinder extends Binder{
         MenuService getService() {
 
             return MenuService.this;  //returning reference to MenuService to get access to all its methods

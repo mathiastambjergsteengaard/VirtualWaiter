@@ -10,6 +10,7 @@
     <string name="at_betale">Totalt at betale:</string>
     <string name="place_order">Bestil ordren</string>
     <string name="slogan">The Virtual Waiter</string>
+    <string name="title_activity_suggestion">SuggestionActivity</string>
 
 
 </resources>

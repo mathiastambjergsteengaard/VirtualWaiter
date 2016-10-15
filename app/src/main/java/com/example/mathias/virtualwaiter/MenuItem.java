@@ -7,6 +7,7 @@ import android.os.Parcelable;
  * Created by mathias on 06/10/16.
  */
 public class MenuItem implements Parcelable{
+    public int Id;
     public float Price;
     public String Name;
     public int Tag;
@@ -14,6 +15,7 @@ public class MenuItem implements Parcelable{
     public int RestaurantID;
 
     protected MenuItem(Parcel in) {
+        Id = in.readInt();
         Price = in.readFloat();
         Name = in.readString();
         Tag = in.readInt();
@@ -23,6 +25,7 @@ public class MenuItem implements Parcelable{
     }
 
     public MenuItem() {
+        Id = 0;
         Price = 0;
         Name = "";
         Tag = 0;
@@ -50,6 +53,7 @@ public class MenuItem implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(Id);
         parcel.writeFloat(Price);
         parcel.writeString(Name);
         parcel.writeInt(Tag);

@@ -1,8 +1,12 @@
 package com.example.mathias.virtualwaiter;
 
+import android.content.BroadcastReceiver;
+import android.content.DialogInterface;
 import android.os.Parcelable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ComponentName;
 import android.content.ServiceConnection;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +41,11 @@ public class MenuOverviewActivity extends AppCompatActivity {
 
 
     MenuService foodService;
+    SuggestionService suggestionService;
     Boolean isBound = false;
+    Boolean isBoundSuggestion = false;
     ListView customListView;
+    int menu_item_id = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +54,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
         if(savedInstanceState == null || !savedInstanceState.containsKey(Constants.RESTAURANT_MENU)) {
             restaurantMenu = new ArrayList<MenuItem>();
             fillOrderList();
+            bindService(new Intent(MenuOverviewActivity.this, SuggestionService.class), suggestionConnection, BIND_AUTO_CREATE);
         }
         else {
             restaurantMenu = savedInstanceState.getParcelableArrayList(Constants.RESTAURANT_MENU);
@@ -54,6 +63,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
         Button visMenuButton = (Button) findViewById(R.id.buttonVisMenu);
         customAdapter = new CustomAdapter(MenuOverviewActivity.this, restaurantMenu);
         customListView.setAdapter(customAdapter);
+        Log.d("Before bind", "");
 
     }
 
@@ -107,6 +117,69 @@ public class MenuOverviewActivity extends AppCompatActivity {
     void onBackBtnClick(View view){
         Intent intent = new Intent(MenuOverviewActivity.this, RestaurantsOverviewActivity.class);
         startActivity(intent);
+    }
+
+    BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+        }
+    };
+
+
+    //http://stackoverflow.com/questions/2478517/how-to-display-a-yes-no-dialog-box-on-android
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which){
+                  case DialogInterface.BUTTON_POSITIVE:
+                    for(MenuItem temp: restaurantMenu){
+                        if(temp.Id == menu_item_id){
+                            temp.Chosen = true;
+                        }
+                    }
+                    customAdapter.notifyDataSetChanged();
+                    break;
+
+                case DialogInterface.BUTTON_NEGATIVE:
+                    break;
+            }
+        }
+    };
+    private ServiceConnection suggestionConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+
+            SuggestionService.ServiceBinder binder = (SuggestionService.ServiceBinder) service;
+            Log.d("Before bind", "");
+            suggestionService = binder.getService();
+            menu_item_id = suggestionService.getMostCommonTagById(restaurantMenu.get(0).RestaurantID);
+            ///http://stackoverflow.com/questions/2478517/how-to-display-a-yes-no-dialog-box-on-android
+            MenuItem item = findById(menu_item_id);
+            if(item != null) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MenuOverviewActivity.this);
+
+                String message = "Baseret på dine tidligere køb vil gerne foreslå at tilføj denne til din ordre: " + item.Name + ". Den koster " + item.Price + " kr. Vil du tilføje denne til din ordre";
+                builder.setMessage(message).setPositiveButton("Ja", dialogClickListener)
+                        .setNegativeButton("Nej", dialogClickListener).show();
+            }
+            isBoundSuggestion = true;
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+            isBoundSuggestion = false;
+        }
+    };
+
+    MenuItem findById(int id){
+        for(MenuItem temp: restaurantMenu){
+            if(temp.Id == id){
+                return temp;
+            }
+        }
+        return null;
     }
 
     private void fillOrderList(){
