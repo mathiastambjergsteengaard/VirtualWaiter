@@ -15,9 +15,11 @@
         android:text="@string/name"
         android:id="@+id/restaurant_name"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
         android:layout_marginTop="5dp"
-        android:textColor="#0000A0" />
+        android:textColor="#0000A0"
+        android:layout_alignParentLeft="true"
+        />
+
 
     <TextView
         style="@style/customRow"
@@ -25,19 +27,11 @@
         android:layout_height="wrap_content"
         android:text="@string/distance"
         android:id="@+id/restaurant_distance"
-        android:layout_alignBottom="@+id/restaurant_visits"
-        android:layout_marginLeft="140dp"
-        android:layout_marginTop="5dp"
-         />
-
-    <TextView
-        style="@style/customRow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/number_of_visits"
-        android:id="@+id/restaurant_visits"
-        android:layout_alignParentTop="true"
+        android:layout_alignBaseline="@+id/restaurant_name"
+        android:layout_alignBottom="@+id/restaurant_name"
+        android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginTop="5dp"
-         />
+        android:layout_marginRight="13dp"
+        android:layout_marginEnd="13dp" />
+
 </RelativeLayout>

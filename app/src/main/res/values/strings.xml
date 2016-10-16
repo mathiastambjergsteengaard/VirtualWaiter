@@ -11,6 +11,6 @@
     <string name="place_order">Bestil ordren</string>
     <string name="slogan">The Virtual Waiter</string>
     <string name="title_activity_suggestion">SuggestionActivity</string>
-
+    <string name="loading_nearby_restaurants">Finder restauranter nær dig</string>
 
 </resources>

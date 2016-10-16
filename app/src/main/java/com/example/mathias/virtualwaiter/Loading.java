@@ -3,15 +3,15 @@ package com.example.mathias.virtualwaiter;
 import android.content.pm.PackageManager;
 import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationManager;
-import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-
 import android.location.LocationListener;
+import android.location.LocationManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
+import java.util.List;
 
-public class MapsLocation extends FragmentActivity implements LocationListener {
+public class Loading  extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
     Location location;
     private int RADIUS = 2500;
@@ -32,8 +32,10 @@ public class MapsLocation extends FragmentActivity implements LocationListener {
         location = locationManager.getLastKnownLocation(bestProvider);
         if (location != null) {
             onLocationChanged(location);
+            getNearRestaurants();
         }
         locationManager.requestLocationUpdates(bestProvider, 18000, 0, this);
+        setContentView(R.layout.activity_loading);
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
@@ -53,8 +55,8 @@ public class MapsLocation extends FragmentActivity implements LocationListener {
             locationManager.requestLocationUpdates(bestProvider, 18000, 0, this);
         }
     }
-    public void getCurrentLocation() {
-        String type = "resturant"; //placeText.getText().toString();
+    public void getNearRestaurants() {
+        String type = "restaurant";
         StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
         googlePlacesUrl.append("location=" + latitude + "," + longitude);
         googlePlacesUrl.append("&radius=" + RADIUS);
@@ -62,8 +64,11 @@ public class MapsLocation extends FragmentActivity implements LocationListener {
         googlePlacesUrl.append("&sensor=true");
         googlePlacesUrl.append("&key=" + GOOGLE_API_KEY);
         GooglePlacesRead googlePlacesReadTask = new GooglePlacesRead();
-        Object[] toPass = new Object[2];
-        toPass[1] = googlePlacesUrl.toString();
+        Object[] toPass = new Object[4];
+        toPass[0] = latitude;
+        toPass[1] = longitude;
+        toPass[2] = googlePlacesUrl.toString();
+        toPass[3] = this;
         googlePlacesReadTask.execute(toPass);
     }
 
@@ -72,7 +77,6 @@ public class MapsLocation extends FragmentActivity implements LocationListener {
     public void onLocationChanged(Location location) {
         latitude = location.getLatitude();
         longitude = location.getLongitude();
-        getCurrentLocation();
     }
 
     @Override

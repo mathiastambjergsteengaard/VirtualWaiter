@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -28,6 +29,14 @@ public class StartActivity extends AppCompatActivity {
         if(getIntent().getBooleanExtra(Constants.ORDER_PLACED, true)){
             Toast.makeText(this, "Din ordre er sent afsted", Toast.LENGTH_LONG).show();
         }
+        Button btncontinue = (Button) findViewById(R.id.buttonFindRestaurant);
+        btncontinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(StartActivity.this,Loading.class);
+                startActivity(intent);
+            }
+        });
     }
 
     protected void click(View view){

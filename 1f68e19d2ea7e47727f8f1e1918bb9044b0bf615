@@ -1,0 +1,45 @@
+{"menu": {
+    "item":{
+		"id": "1",
+		"price":"180" ,
+		"name":"Kyllingburger" ,
+		"tag":"CHICKEN",
+		"RestaurantID":"test"},
+    "item2":{
+		"id": "2",
+		"price":"280" ,
+		"name":"Husets burger" ,
+		"tag":"BEEF",
+		"RestaurantID":"test"},
+    "item3":{
+		"id": "3",
+		"price":"550" ,
+		"name":"Rødvin" ,
+		"tag":"ALCOHOLICDRINK",
+		"RestaurantID":"test"},
+    "item4":{
+		"id": "4",
+		"price":"55" ,
+		"name":"Royal Classic" ,
+		"tag":"ALCOHOLICDRINK",
+		"RestaurantID":"test"},    
+
+    "item5":{
+		"id": "5",
+		"price":"20" ,
+		"name":"Mineralvand" ,
+		"tag":"SOFTDRINK",
+		"RestaurantID":"test"},    
+    "item6":{
+		"id": "6",
+		"price":"110" ,
+		"name":"Smoothie" ,
+		"tag":"SOFTDRINK",
+		"RestaurantID":"test"},
+	"item7":{
+		"id": "7",
+		"price":"150" ,
+		"name":"Bøf sandwich" ,
+		"tag":"BEEF",
+		"RestaurantID":"test"}
+}}    

@@ -54,13 +54,19 @@ public class RestaurantListAdapter extends BaseAdapter {
 
             TextView Name = (TextView) convertView.findViewById(R.id.restaurant_name);
             TextView Distance = (TextView) convertView.findViewById(R.id.restaurant_distance);
-            TextView Visits = (TextView) convertView.findViewById(R.id.restaurant_visits);
-
+            Name.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    TextView tv = (TextView) view;
+                    String restaurant = tv.getText().toString();
+                }
+            });
             //setting text
-            Name.setText(mRestaurantModelList.get(position).getName());
-            Distance.setText(mRestaurantModelList.get(position).getDistance()+"meters");
-            Visits.setText("Previous visits"+ mRestaurantModelList.get(position).getVisits());
 
+            Name.setText(mRestaurantModelList.get(position).getName());
+            Distance.setText(mRestaurantModelList.get(position).getDistance()+" meter");
+            Name.setTextSize(16);
+            Distance.setTextSize(16);
             //save restaurantId to tag
             convertView.setTag(mRestaurantModelList.get(position).getID());
 
