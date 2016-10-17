@@ -1,17 +1,17 @@
 {"menu": {
-    "item1":{
+    "item":{
 		"id": "1",
 		"price":"180" ,
 		"name":"Kyllingburger" ,
 		"tag":"CHICKEN",
 		"RestaurantID":"test"},
-    "item2":{
+    "item":{
 		"id": "2",
 		"price":"280" ,
 		"name":"Husets burger" ,
 		"tag":"BEEF",
 		"RestaurantID":"test"},
-    "item3":{
+    "item":{
 		"id": "3",
 		"price":"550" ,
 		"name":"Rødvin" ,
