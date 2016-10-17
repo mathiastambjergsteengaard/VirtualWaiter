@@ -27,7 +27,7 @@
         android:text="@string/loading_nearby_restaurants"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
+        android:id="@+id/loadingText"
         android:layout_below="@+id/loadingPanel"
         android:layout_centerHorizontal="true" />
 
@@ -36,6 +36,6 @@
         android:layout_height="wrap_content"
         android:indeterminate="true"
         android:id="@+id/progressBar3"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/loadingText"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>

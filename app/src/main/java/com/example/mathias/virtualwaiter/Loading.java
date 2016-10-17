@@ -8,6 +8,9 @@ import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -21,21 +24,35 @@ public class Loading  extends AppCompatActivity implements LocationListener {
     private static final int MY_PERMISSION_ACCESS_FINE_LOCATION = 144;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
-        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_FINE_LOCATION  },
-                    this.MY_PERMISSION_ACCESS_FINE_LOCATION );
-            return;
-        }
-        Criteria criteria = new Criteria();
-        String bestProvider = locationManager.getBestProvider(criteria, true);
-        location = locationManager.getLastKnownLocation(bestProvider);
-        if (location != null) {
-            onLocationChanged(location);
-            getNearRestaurants();
-        }
-        locationManager.requestLocationUpdates(bestProvider, 18000, 0, this);
         setContentView(R.layout.activity_loading);
+        TextView loadingTextView = (TextView) findViewById(R.id.loadingText);
+        Bundle extra = getIntent().getExtras();
+        if (extra !=null)
+        {
+            if (extra.get("state").equals("restaurant")){
+                loadingTextView.setText(getResources().getString(R.string.loading_nearby_restaurants));
+                locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+                if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions( this, new String[] {  android.Manifest.permission.ACCESS_FINE_LOCATION  },
+                            this.MY_PERMISSION_ACCESS_FINE_LOCATION );
+                    return;
+                }
+                Criteria criteria = new Criteria();
+                String bestProvider = locationManager.getBestProvider(criteria, true);
+                location = locationManager.getLastKnownLocation(bestProvider);
+                if (location != null) {
+                    onLocationChanged(location);
+                    getNearRestaurants();
+                }
+                locationManager.requestLocationUpdates(bestProvider, 18000, 0, this);
+            }else if(extra.get("state").equals( "menu")){
+                String findId = extra.getString("restaurantId");
+                loadingTextView.setText(getResources().getString(R.string.loading_menu));
+                getMenu(findId);
+            }
+        }
+
+
     }
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults){
@@ -54,6 +71,14 @@ public class Loading  extends AppCompatActivity implements LocationListener {
             }
             locationManager.requestLocationUpdates(bestProvider, 18000, 0, this);
         }
+    }
+
+    public void getMenu(String id){
+        Object [] toPass = new Object[2];
+        toPass[0] = id;
+        toPass[1] = this;
+        MenuLoading menuLoading = new MenuLoading();
+        menuLoading.execute(toPass);
     }
     public void getNearRestaurants() {
         String type = "restaurant";

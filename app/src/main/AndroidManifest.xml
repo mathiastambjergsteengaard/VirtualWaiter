@@ -21,7 +21,6 @@
         <activity android:name=".RestaurantsOverviewActivity" />
 
         <activity android:name=".OrderConfirmationActivity" />
-        <activity android:name=".MapsLocation" />
         <activity android:name=".MenuOverviewActivity" />
 
         <service

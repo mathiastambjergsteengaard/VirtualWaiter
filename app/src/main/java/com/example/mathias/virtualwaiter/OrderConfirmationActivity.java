@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -27,13 +28,10 @@ import java.util.List;
 
 public class OrderConfirmationActivity extends AppCompatActivity {
     private List<MenuItem> orderList;
-    MapsLocation mapsLocation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmation);
-        Intent intent = new Intent(this,MapsLocation.class);
-
         //http://stackoverflow.com/questions/12503836/how-to-save-custom-arraylist-on-android-screen-rotate
         if(savedInstanceState == null || !savedInstanceState.containsKey(Constants.ORDER_LIST)) {
             List<MenuItem> restaurantMenu = getIntent().getBundleExtra(Constants.RESTAURANT_MENU).getParcelableArrayList(Constants.ORDER_LIST);
@@ -48,6 +46,13 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             orderList = savedInstanceState.getParcelableArrayList(Constants.ORDER_LIST);
         }
         updateView();
+        Button btnConfirm = (Button) findViewById(R.id.buttonBestil);
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onCheckOutClick(view);
+            }
+        });
     }
 
     private String getAccPrice(){

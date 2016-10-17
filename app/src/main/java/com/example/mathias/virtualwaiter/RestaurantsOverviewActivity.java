@@ -30,30 +30,12 @@ public class RestaurantsOverviewActivity extends AppCompatActivity {
         if (extra != null){
             RestaurantModelList = (List<RestaurantModel>) extra.getSerializable("Resturants");
         }
-        findVirtualWaiterResturants();
         list_restaurants_overview = (ListView)findViewById(R.id.list_restaurant_overview);
         adapter = new RestaurantListAdapter(getApplicationContext(), RestaurantModelList);
         list_restaurants_overview.setAdapter(adapter);
 
     }
-    private void findVirtualWaiterResturants()
-    {
-        ExternDBStub externSource = new ExternDBStub();
-        String JSONString = externSource.getRestaurants();
-        try {
-            JSONObject obj = new JSONObject(JSONString);
-            JSONArray array = obj.getJSONArray("restaurant");
-            ArrayList<String> idList = new ArrayList<>();
-            for(int i = 0;i < array.length();i++){
-                idList.add(array.getJSONObject(i).toString());
-            }
-            int a = 5;
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-
-        }
-    }
 
 
     @Override

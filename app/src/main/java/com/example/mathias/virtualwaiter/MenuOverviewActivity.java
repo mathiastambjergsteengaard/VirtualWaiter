@@ -52,19 +52,31 @@ public class MenuOverviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_overview);
         if(savedInstanceState == null || !savedInstanceState.containsKey(Constants.RESTAURANT_MENU)) {
-            restaurantMenu = new ArrayList<MenuItem>();
-            fillOrderList();
+            Bundle extra = getIntent().getExtras();
+            if (extra != null)
+            {
+                restaurantMenu = (List<MenuItem>)extra.getSerializable("menus");
+            }
+
             bindService(new Intent(MenuOverviewActivity.this, SuggestionService.class), suggestionConnection, BIND_AUTO_CREATE);
         }
         else {
             restaurantMenu = savedInstanceState.getParcelableArrayList(Constants.RESTAURANT_MENU);
         }
         customListView = (ListView) findViewById(R.id.custom_listview);
-        Button visMenuButton = (Button) findViewById(R.id.buttonVisMenu);
         customAdapter = new CustomAdapter(MenuOverviewActivity.this, restaurantMenu);
         customListView.setAdapter(customAdapter);
-        Log.d("Before bind", "");
-
+        Button orderConfirmButton = (Button) findViewById(R.id.buttonVisOrdre);
+        orderConfirmButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putParcelableArrayList(Constants.ORDER_LIST, (ArrayList<? extends Parcelable>) restaurantMenu);
+                Intent intent = new Intent(MenuOverviewActivity.this, OrderConfirmationActivity.class);
+                intent.putExtra(Constants.RESTAURANT_MENU, bundle);
+                startActivity(intent);
+            }
+        });
     }
 
 
@@ -90,13 +102,6 @@ public class MenuOverviewActivity extends AppCompatActivity {
         }
     }
 
-    void onShowOrderBtnClick(View view){
-        Bundle bundle = new Bundle();
-        bundle.putParcelableArrayList(Constants.ORDER_LIST, (ArrayList<? extends Parcelable>) restaurantMenu);
-        Intent intent = new Intent(MenuOverviewActivity.this, OrderConfirmationActivity.class);
-        intent.putExtra(Constants.RESTAURANT_MENU, bundle);
-        startActivity(intent);
-    }
 
     private ServiceConnection restaurantConnection = new ServiceConnection() {
 
@@ -115,7 +120,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
     };
 
     void onBackBtnClick(View view){
-        Intent intent = new Intent(MenuOverviewActivity.this, RestaurantsOverviewActivity.class);
+        Intent intent = new Intent(this, RestaurantsOverviewActivity.class);
         startActivity(intent);
     }
 
@@ -154,7 +159,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
             SuggestionService.ServiceBinder binder = (SuggestionService.ServiceBinder) service;
             Log.d("Before bind", "");
             suggestionService = binder.getService();
-            menu_item_id = suggestionService.getMostCommonTagById(restaurantMenu.get(0).RestaurantID);
+            //menu_item_id = suggestionService.getMostCommonTagById(restaurantMenu.get(0).RestaurantID);
             ///http://stackoverflow.com/questions/2478517/how-to-display-a-yes-no-dialog-box-on-android
             MenuItem item = findById(menu_item_id);
             if(item != null) {
@@ -186,56 +191,56 @@ public class MenuOverviewActivity extends AppCompatActivity {
         MenuItem mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi); mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
         mi = new MenuItem();
         mi.Price = (float)2.34;
         mi.Name = "heehhej";
-        mi.RestaurantID = 2;
+        mi.RestaurantID = "2";
         restaurantMenu.add(mi);
     }
 

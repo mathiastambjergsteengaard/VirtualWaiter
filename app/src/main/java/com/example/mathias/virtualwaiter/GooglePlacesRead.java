@@ -16,6 +16,7 @@ public class GooglePlacesRead extends AsyncTask<Object, Integer, String> {
     String googlePlacesData = null;
     double phoneLatitude;
     double phoneLongitude;
+    ArrayList<String> idList;
     Context context;
     @Override
     protected String doInBackground(Object... inputObj) {
@@ -25,7 +26,9 @@ public class GooglePlacesRead extends AsyncTask<Object, Integer, String> {
             String googlePlacesUrl = (String) inputObj[2];
             context = (Context) inputObj[3];
             Http http = new Http();
+            getVirtualWaiterResturantsIds();
             googlePlacesData = http.get(googlePlacesUrl);
+
         } catch (Exception e) {
             Log.d("Google Place Read", e.toString());
         }
@@ -40,11 +43,13 @@ public class GooglePlacesRead extends AsyncTask<Object, Integer, String> {
             JSONArray arr = obj.getJSONArray("results");
             int size = arr.length();
             for (int i = 0;i<size;i++){
-                listOfResturants.add(createResturant((JSONObject) arr.get(i)));
+                RestaurantModel resturant = createResturant((JSONObject) arr.get(i));
+                if (idList.contains(resturant.getID()))
+                    listOfResturants.add(resturant);
             }
+
             Intent nextActivityIntent = new Intent(context,RestaurantsOverviewActivity.class);
             nextActivityIntent.putExtra("Resturants",  listOfResturants);
-
             context.startActivity(nextActivityIntent);
 
         } catch (JSONException e) {
@@ -53,6 +58,26 @@ public class GooglePlacesRead extends AsyncTask<Object, Integer, String> {
 
         //TODO create next activity
 
+    }
+    private void getVirtualWaiterResturantsIds()
+    {
+        ExternDBStub externSource = new ExternDBStub();
+        String JSONString = externSource.getRestaurants();
+        try {
+            JSONObject obj = new JSONObject(JSONString);
+            JSONArray array = obj.getJSONArray("restaurant");
+            idList = new ArrayList<>();
+            for(int i = 0;i < array.length();i++){
+                String id = array.getJSONObject(i).getString("id");
+                idList.add(id);
+            }
+            int a = 5;
+            a = 4;
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+
+        }
     }
     private RestaurantModel createResturant(JSONObject singleJsonObj)
     {

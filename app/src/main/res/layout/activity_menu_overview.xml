@@ -32,10 +32,9 @@
         android:text="Din ordre"
         android:id="@+id/buttonVisOrdre"
         android:layout_above="@+id/custom_listview"
-        android:layout_alignEnd="@+id/custom_listview"
         android:backgroundTint="#0000A0"
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:textSize="15dp"
-        android:onClick="onShowOrderBtnClick" />
+        android:layout_alignRight="@+id/custom_listview" />
 </RelativeLayout>

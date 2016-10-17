@@ -2,6 +2,7 @@ package com.example.mathias.virtualwaiter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,6 +60,15 @@ public class RestaurantListAdapter extends BaseAdapter {
                 public void onClick(View view) {
                     TextView tv = (TextView) view;
                     String restaurant = tv.getText().toString();
+                    for (RestaurantModel model : mRestaurantModelList){
+                        if (model.getName() == restaurant){
+                            Intent intent = new Intent(mContext,Loading.class);
+                            intent.putExtra("state","menu");
+                            intent.putExtra("restaurantId",model.getID());
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            mContext.startActivity(intent);
+                        }
+                    }
                 }
             });
             //setting text

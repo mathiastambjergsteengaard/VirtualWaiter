@@ -34,6 +34,7 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(StartActivity.this,Loading.class);
+                intent.putExtra("state","restaurant");
                 startActivity(intent);
             }
         });
@@ -57,8 +58,8 @@ public class StartActivity extends AppCompatActivity {
                 float deltaX = x2 - x1;
                 if (Math.abs(deltaX) > MIN_DISTANCE)
                 {
-                    Log.d("Start","start");
-                    startActivity(new Intent(StartActivity.this, MenuOverviewActivity.class));
+
+                    startActivity(new Intent(StartActivity.this, Loading.class));
                 }
                 else
                 {
