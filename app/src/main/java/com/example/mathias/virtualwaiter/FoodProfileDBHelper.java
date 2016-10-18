@@ -37,7 +37,7 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
                 PRICE + " FLOAT, " +
                 TAG + " INTEGER, " +
                 NAME + " TEXT," +
-                RESTAURANT_ID + " INTEGER" +
+                RESTAURANT_ID + " TEXT" +
                 ")";
         db.execSQL(menu_item_query);
     }
@@ -68,9 +68,8 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
         closeDB();
     }
 
-    public int getMostCommonTag(int id){
+    public int getMostCommonTag(){
         openDB();
-        //http://stackoverflow.com/questions/9853671/sql-select-most-common-values
         String query = "select " + TAG + " from " + TABLE_NAME + " group by " + TAG + " having count(*) = ( select count(*) from "  + TABLE_NAME + " group by " + TAG + " order by count(*) desc limit 1)";
         Cursor cursor = foodProfileDB.rawQuery(query,null);
         cursor.moveToFirst();

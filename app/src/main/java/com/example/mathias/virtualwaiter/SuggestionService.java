@@ -32,7 +32,7 @@ public class SuggestionService extends Service {
         return ServiceBinder;
     }
 
-    public int getMostCommonTagById(int restaurant_id){
-        return dbHelper.getMostCommonTag(restaurant_id);
+    public int getMostCommonTagById(){
+        return dbHelper.getMostCommonTag();
     }
 }

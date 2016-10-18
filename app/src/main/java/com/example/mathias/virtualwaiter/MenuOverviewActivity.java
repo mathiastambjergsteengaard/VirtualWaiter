@@ -45,7 +45,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
     Boolean isBound = false;
     Boolean isBoundSuggestion = false;
     ListView customListView;
-    int menu_item_id = 0;
+    int tag = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -159,13 +159,13 @@ public class MenuOverviewActivity extends AppCompatActivity {
             SuggestionService.ServiceBinder binder = (SuggestionService.ServiceBinder) service;
             Log.d("Before bind", "");
             suggestionService = binder.getService();
-            //menu_item_id = suggestionService.getMostCommonTagById(restaurantMenu.get(0).RestaurantID);
+            tag = suggestionService.getMostCommonTagById();
             ///http://stackoverflow.com/questions/2478517/how-to-display-a-yes-no-dialog-box-on-android
-            MenuItem item = findById(menu_item_id);
+            MenuItem item = findById(tag);
             if(item != null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MenuOverviewActivity.this);
 
-                String message = "Baseret på dine tidligere køb vil gerne foreslå at tilføj denne til din ordre: " + item.Name + ". Den koster " + item.Price + " kr. Vil du tilføje denne til din ordre";
+                String message = "Baseret på dine tidligere køb vil gerne foreslå at tilføje denne til din ordre: " + item.Name + ". Den koster " + item.Price + " kr. Vil du tilføje denne til din ordre";
                 builder.setMessage(message).setPositiveButton("Ja", dialogClickListener)
                         .setNegativeButton("Nej", dialogClickListener).show();
             }
@@ -178,9 +178,9 @@ public class MenuOverviewActivity extends AppCompatActivity {
         }
     };
 
-    MenuItem findById(int id){
+    MenuItem findById(int tag){
         for(MenuItem temp: restaurantMenu){
-            if(temp.Id == id){
+            if(temp.Tag == tag){
                 return temp;
             }
         }
