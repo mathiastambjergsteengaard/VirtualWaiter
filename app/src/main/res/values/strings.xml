@@ -13,4 +13,5 @@
     <string name="title_activity_suggestion">SuggestionActivity</string>
     <string name="loading_nearby_restaurants">Finder restauranter nær dig.</string>
     <string name="loading_menu">Finder menuen til den valgte resturant.</string>
+    <string name="suggestion">Baseret på dine tidligere køb vil gerne foreslå at tilføje denne til din ordre: %1$s. Den koster %2$f kr. Vil du tilføje denne til din ordre</string>
 </resources>

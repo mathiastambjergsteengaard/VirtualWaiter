@@ -24,7 +24,6 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_start);
         if(getIntent().getBooleanExtra(Constants.ORDER_PLACED, true)){
             Toast.makeText(this, "Din ordre er sent afsted", Toast.LENGTH_LONG).show();

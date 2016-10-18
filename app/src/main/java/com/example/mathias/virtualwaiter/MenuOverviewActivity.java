@@ -165,7 +165,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
             if(item != null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(MenuOverviewActivity.this);
 
-                String message = "Baseret på dine tidligere køb vil gerne foreslå at tilføje denne til din ordre: " + item.Name + ". Den koster " + item.Price + " kr. Vil du tilføje denne til din ordre";
+                String message = getResources().getString(R.string.suggestion, item.Name, item.Price);
                 builder.setMessage(message).setPositiveButton("Ja", dialogClickListener)
                         .setNegativeButton("Nej", dialogClickListener).show();
             }

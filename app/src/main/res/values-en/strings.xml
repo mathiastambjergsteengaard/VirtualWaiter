@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">The Virtual Waiter</string>
+    <string name="suggestion">Based on your previous purcheses we would suggest added this to your order: %1$s. It is priced at %2$f kr. Would you like to add this to your order?</string>
     <string name="at_betale">Total amount:</string>
     <string name="distance">Distance</string>
     <string name="find_restaurants">Find restaurants</string>
