@@ -139,7 +139,7 @@ public class MenuOverviewActivity extends AppCompatActivity {
             switch (which){
                   case DialogInterface.BUTTON_POSITIVE:
                     for(MenuItem temp: restaurantMenu){
-                        if(temp.Id == menu_item_id){
+                        if(temp.Tag == tag){
                             temp.Chosen = true;
                         }
                     }
