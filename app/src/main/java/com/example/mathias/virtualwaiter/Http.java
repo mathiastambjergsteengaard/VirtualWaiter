@@ -19,6 +19,7 @@ public class Http {
         try {
             URL url = new URL(httpUrl);
             httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setConnectTimeout(15000);
             httpURLConnection.connect();
             inputStream = httpURLConnection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));

@@ -46,6 +46,7 @@ public class MenuLoading extends AsyncTask<Object, Integer, String> {
             }
             Intent nextActivityIntent = new Intent(context,MenuOverviewActivity.class);
             nextActivityIntent.putExtra("menus",menu);
+            nextActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(nextActivityIntent);
         }
         catch(Exception e){

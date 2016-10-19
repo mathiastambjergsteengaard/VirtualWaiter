@@ -12,7 +12,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_menu"
+        android:text="@string/menuBack"
         android:id="@+id/buttonVisMenu"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -20,7 +20,7 @@
         android:textStyle="bold"
         android:textColor="#ffffff"
         android:textSize="15dp"
-        android:onClick="onBackBtnClick" />
+        android:layout_alignParentLeft="true" />
 
     <ScrollView
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/at_betale"
+        android:text="@string/ToPay"
         android:id="@+id/textView"
         android:layout_below="@+id/sv"
         android:layout_alignParentRight="true"

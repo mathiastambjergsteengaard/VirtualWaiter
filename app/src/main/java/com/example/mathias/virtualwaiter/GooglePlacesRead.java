@@ -34,7 +34,6 @@ public class GooglePlacesRead extends AsyncTask<Object, Integer, String> {
         }
         return googlePlacesData;
     }
-
     @Override
     protected void onPostExecute(String result) {
         try {
@@ -50,7 +49,9 @@ public class GooglePlacesRead extends AsyncTask<Object, Integer, String> {
 
             Intent nextActivityIntent = new Intent(context,RestaurantsOverviewActivity.class);
             nextActivityIntent.putExtra("Resturants",  listOfResturants);
+            nextActivityIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
             context.startActivity(nextActivityIntent);
+
 
         } catch (JSONException e) {
             e.printStackTrace();

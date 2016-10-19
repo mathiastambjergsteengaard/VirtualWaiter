@@ -44,7 +44,8 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-
+        foodProfileDB.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(foodProfileDB);
     }
 
     public void openDB(){
@@ -59,6 +60,7 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
     }
     public void insertMenuItem(MenuItem item){
         openDB();
+
         ContentValues values = new ContentValues();
         values.put(NAME,item.Name);
         values.put(PRICE,item.Price);
@@ -72,10 +74,16 @@ public class FoodProfileDBHelper extends SQLiteOpenHelper {
         openDB();
         String query = "select " + TAG + " from " + TABLE_NAME + " group by " + TAG + " having count(*) = ( select count(*) from "  + TABLE_NAME + " group by " + TAG + " order by count(*) desc limit 1)";
         Cursor cursor = foodProfileDB.rawQuery(query,null);
-        cursor.moveToFirst();
-        Log.d("Tag", Integer.toString(cursor.getColumnIndex(TAG)));
-        closeDB();
-        return cursor.getColumnIndex(TAG);
+        if (cursor != null) {
+            if (cursor.getCount() >0) {
+                cursor.moveToFirst();
+
+                int result = cursor.getInt(cursor.getColumnIndex(TAG));
+                closeDB();
+                return result;
+            }
+        }
+        return 0;
     }
 
 }

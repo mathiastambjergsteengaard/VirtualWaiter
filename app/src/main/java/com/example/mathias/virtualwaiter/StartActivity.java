@@ -25,7 +25,9 @@ public class StartActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
-        if(getIntent().getBooleanExtra(Constants.ORDER_PLACED, true)){
+        Intent orderPlacedIntent = getIntent();
+
+        if(orderPlacedIntent != null && orderPlacedIntent.getExtras()!= null && orderPlacedIntent.getExtras().getBoolean(Constants.ORDER_PLACED) == true){
             Toast.makeText(this, "Din ordre er sent afsted", Toast.LENGTH_LONG).show();
         }
         Button btncontinue = (Button) findViewById(R.id.buttonFindRestaurant);
@@ -57,8 +59,9 @@ public class StartActivity extends AppCompatActivity {
                 float deltaX = x2 - x1;
                 if (Math.abs(deltaX) > MIN_DISTANCE)
                 {
-
-                    startActivity(new Intent(StartActivity.this, Loading.class));
+                    Intent intent = new Intent(StartActivity.this, Loading.class);
+                    intent.putExtra("state","restaurant");
+                    startActivity(intent);
                 }
                 else
                 {

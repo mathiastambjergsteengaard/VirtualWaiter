@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">The Virtual Waiter</string>
-    <string name="suggestion">Based on your previous purcheses we would suggest added this to your order: %1$s. It is priced at %2$f kr. Would you like to add this to your order?</string>
-    <string name="at_betale">Total amount:</string>
+    <string name="suggestion">Based on your previous purcheses we would suggest adding this to your order: %1$s. It is priced at %2$s kr. Would you like to add this to your order?</string>
     <string name="distance">Distance</string>
     <string name="find_restaurants">Find restaurants</string>
     <string name="name">Name</string>
     <string name="number_of_visits">Previous visits</string>
     <string name="place_order">Place Order</string>
     <string name="restaurants_nearby">Restaurants nearby</string>
-    <string name="show_menu">Show menu</string>
-    <string name="your_order">Current order</string>
+    <string name="your_order">Checkout</string>
+    <string name="loading_menu">Finding menu to the chosen restaurant</string>
+    <string name="loading_nearby_restaurants">Finding nearby restaurant</string>
+    <string name="menuBack">Back</string>
+    <string name="ToPay">Total amount:</string>
 </resources>

@@ -1,39 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@mipmap/menu"
-    tools:context="com.example.mathias.virtualwaiter.Menu2OverviewActivity">
+    tools:context=".MenuOverviewActivity">
+
 
     <Button
-        style="@style/listViews"
+        style="@style/listViewsXL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_menu"
-        android:id="@+id/buttonVismenuRest1"
+        android:text="@string/menuBack"
+        android:id="@+id/buttonMenuBack"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-         />
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/custom_listview"
-        android:layout_below="@+id/buttonVismenuRest1"
-        android:layout_centerHorizontal="true"
         android:choiceMode="multipleChoice"
-        android:layout_marginTop="20dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp"
+        android:layout_alignParentLeft="true" />
 
     <Button
-        style="@style/listViews"
+        style="@style/listViewsXL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/your_order"
-        android:id="@+id/buttonVisOrdreRest1"
-        android:layout_above="@+id/custom_listview"
+        android:id="@+id/buttonVisOrdre"
+        android:layout_marginRight="40dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-         />
-
+        android:layout_marginTop="10dp"
+        android:layout_alignParentRight="true" />
 </RelativeLayout>

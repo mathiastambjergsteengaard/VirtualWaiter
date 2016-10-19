@@ -43,7 +43,7 @@ public class RestaurantListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
 
@@ -55,28 +55,22 @@ public class RestaurantListAdapter extends BaseAdapter {
 
             TextView Name = (TextView) convertView.findViewById(R.id.restaurant_name);
             TextView Distance = (TextView) convertView.findViewById(R.id.restaurant_distance);
-            Name.setOnClickListener(new View.OnClickListener() {
+            convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    TextView tv = (TextView) view;
-                    String restaurant = tv.getText().toString();
-                    for (RestaurantModel model : mRestaurantModelList){
-                        if (model.getName() == restaurant){
                             Intent intent = new Intent(mContext,Loading.class);
                             intent.putExtra("state","menu");
-                            intent.putExtra("restaurantId",model.getID());
+                            intent.putExtra("restaurantId",mRestaurantModelList.get(position).getID());
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             mContext.startActivity(intent);
-                        }
-                    }
                 }
             });
             //setting text
 
             Name.setText(mRestaurantModelList.get(position).getName());
             Distance.setText(mRestaurantModelList.get(position).getDistance()+" meter");
-            Name.setTextSize(16);
-            Distance.setTextSize(16);
+            Name.setTextSize(18);
+            Distance.setTextSize(18);
             //save restaurantId to tag
             convertView.setTag(mRestaurantModelList.get(position).getID());
 

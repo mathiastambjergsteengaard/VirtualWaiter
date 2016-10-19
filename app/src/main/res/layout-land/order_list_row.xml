@@ -5,14 +5,13 @@
 
 
     <TextView
-        style="@style/customRow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ToPay"
         android:id="@+id/txtViewGeneral"
         android:layout_alignParentLeft="true"
         android:padding="10dp"
-        android:textSize="20sp"
+        android:textSize="10sp"
          />
 
 </LinearLayout>

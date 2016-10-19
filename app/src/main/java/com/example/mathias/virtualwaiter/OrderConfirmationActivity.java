@@ -27,16 +27,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OrderConfirmationActivity extends AppCompatActivity {
-    private List<MenuItem> orderList;
+    private ArrayList<MenuItem> orderList;
+    private ArrayList<MenuItem> orgOrderList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_confirmation);
         //http://stackoverflow.com/questions/12503836/how-to-save-custom-arraylist-on-android-screen-rotate
         if(savedInstanceState == null || !savedInstanceState.containsKey(Constants.ORDER_LIST)) {
-            List<MenuItem> restaurantMenu = getIntent().getBundleExtra(Constants.RESTAURANT_MENU).getParcelableArrayList(Constants.ORDER_LIST);
+            orgOrderList = getIntent().getBundleExtra(Constants.RESTAURANT_MENU).getParcelableArrayList(Constants.ORDER_LIST);
             orderList = new ArrayList<>();
-            for(MenuItem temp: restaurantMenu){
+            for(MenuItem temp: orgOrderList){
                 if(temp.Chosen){
                     orderList.add(temp);
                 }
@@ -47,6 +48,16 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         }
         updateView();
         Button btnConfirm = (Button) findViewById(R.id.buttonBestil);
+        Button btnBack = (Button) findViewById(R.id.buttonVisMenu);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent backIntent = new Intent(OrderConfirmationActivity.this,MenuOverviewActivity.class);
+                backIntent.putExtra("backMenuExtra",orgOrderList);
+                startActivity(backIntent);
+                finish();
+            }
+        });
         btnConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -86,20 +97,10 @@ public class OrderConfirmationActivity extends AppCompatActivity {
             switch (which){
                 case DialogInterface.BUTTON_POSITIVE:
                     saveOrderToDB();
-                    //http://stackoverflow.com/questions/2197741/how-can-i-send-emails-from-my-android-application
-                    Intent i = new Intent(Intent.ACTION_SEND);
-                    i.setType("message/rfc822");
-                    i.putExtra(Intent.EXTRA_EMAIL  , new String[]{"mathiastambjergiversen@gmail.com"});
-                    i.putExtra(Intent.EXTRA_SUBJECT, "Ny ordre");
-                    i.putExtra(Intent.EXTRA_TEXT   , "Hej");
-                    try {
-                        startActivity(Intent.createChooser(i, "Send mail..."));
-                    } catch (android.content.ActivityNotFoundException ex) {
-                        Toast.makeText(OrderConfirmationActivity.this, "Der er ingen email klient installeret", Toast.LENGTH_SHORT).show();
-                    }
                     Intent intent = new Intent(OrderConfirmationActivity.this, StartActivity.class);
                     intent.putExtra(Constants.ORDER_PLACED, true);
                     startActivity(intent);
+                    finish();
                     break;
 
                 case DialogInterface.BUTTON_NEGATIVE:
@@ -108,13 +109,11 @@ public class OrderConfirmationActivity extends AppCompatActivity {
         }
     };
 
-    void onBackBtnClick(View view){
-        finish();
-    }
+
 
     private void updateView(){
         TextView txt = (TextView) findViewById(R.id.textView);
-        txt.setText("At betale: " + getAccPrice());
+        txt.setText("At betale: " + getAccPrice() + " kr.");
         ScrollView sv = (ScrollView) findViewById(R.id.sv);
         LinearLayout ll = new LinearLayout(OrderConfirmationActivity.this);
         ll.setOrientation(LinearLayout.VERTICAL);

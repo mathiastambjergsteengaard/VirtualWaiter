@@ -1,17 +1,16 @@
 <resources>
     <string name="app_name">The Virtual Waiter</string>
-    <string name="show_menu">Tilbage</string>
-    <string name="your_order">Din ordre</string>
+    <string name="your_order">Check ud</string>
     <string name="restaurants_nearby">Restauranter nær dig</string>
     <string name="find_restaurants">Find restaurant</string>
     <string name="name">Navn</string>
     <string name="distance">Afstand</string>
     <string name="number_of_visits">Antal besøg</string>
-    <string name="at_betale">Totalt at betale:</string>
     <string name="place_order">Bestil ordren</string>
-    <string name="slogan">The Virtual Waiter</string>
-    <string name="title_activity_suggestion">SuggestionActivity</string>
+    <string name="slogan" translatable="false">The Virtual Waiter</string>
     <string name="loading_nearby_restaurants">Finder restauranter nær dig.</string>
     <string name="loading_menu">Finder menuen til den valgte resturant.</string>
-    <string name="suggestion">Baseret på dine tidligere køb vil gerne foreslå at tilføje denne til din ordre: %1$s. Den koster %2$f kr. Vil du tilføje denne til din ordre</string>
+    <string name="suggestion">Baseret på dine tidligere køb vil gerne foreslå at tilføje denne til din ordre: %1$s. Den koster %2$s kr. Vil du tilføje denne til din ordre</string>
+    <string name="menuBack">Tilbage</string>
+    <string name="ToPay">At betale:</string>
 </resources>

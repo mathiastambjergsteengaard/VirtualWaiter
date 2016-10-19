@@ -11,10 +11,11 @@
         style="@style/listViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/show_menu"
-        android:id="@+id/buttonVisMenu"
+        android:text="@string/menuBack"
+        android:id="@+id/buttonMenuBack"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true" />
 
     <ListView
         android:layout_width="wrap_content"
@@ -22,14 +23,14 @@
         android:id="@+id/custom_listview"
         android:layout_centerHorizontal="true"
         android:choiceMode="multipleChoice"
-        android:layout_below="@+id/buttonVisMenu"
+        android:layout_below="@+id/buttonMenuBack"
         android:layout_marginTop="20dp" />
 
     <Button
         style="@style/listViews"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Din ordre"
+        android:text="@string/your_order"
         android:id="@+id/buttonVisOrdre"
         android:layout_above="@+id/custom_listview"
         android:backgroundTint="#0000A0"

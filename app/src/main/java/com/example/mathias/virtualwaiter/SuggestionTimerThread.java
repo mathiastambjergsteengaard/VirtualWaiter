@@ -11,9 +11,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by mathias on 06/10/16.
- */
 public class SuggestionTimerThread implements Runnable {
     private int SLEEP_TIME_MS = 10*1000;
     private Context context_;
@@ -26,7 +23,6 @@ public class SuggestionTimerThread implements Runnable {
     public void run() {
         while(true) {
             try {
-                Log.d("hej", "Wait for 10 sec");
                 Intent broadCastIntent = new Intent();
                 broadCastIntent.setAction("com.example.new_suggestion");
                 context_.sendBroadcast(broadCastIntent);

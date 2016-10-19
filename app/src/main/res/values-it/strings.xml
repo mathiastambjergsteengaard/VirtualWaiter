@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">The Virtual Waiter</string>
-    <string name="at_betale">Importo totale</string>
     <string name="distance">Distanza</string>
     <string name="find_restaurants">Trova il ristorante</string>
     <string name="name">Nome</string>
     <string name="number_of_visits">Visite precedenti</string>
     <string name="place_order">Invia ordine</string>
     <string name="restaurants_nearby">Ristoranti nelle vicinanze</string>
-    <string name="show_menu">Mostra menu</string>
     <string name="your_order">L\'ordine</string>
+    <string name="ToPay">Total amount:</string>
+    <string name="loading_menu">Finding menu to the chosen restaurant</string>
+    <string name="loading_nearby_restaurants">Finding nearby restaurant</string>
+    <string name="menuBack">Back</string>
+    <string name="suggestion">Baseret på dine tidligere køb vil gerne foreslå at tilføje denne til din ordre: %1$s. Den koster %2$s kr. Vil du tilføje denne til din ordre</string>
 </resources>
