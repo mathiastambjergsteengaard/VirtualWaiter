@@ -53,9 +53,9 @@ public class Loading extends AppCompatActivity implements LocationListener {
                 location = locationManager.getLastKnownLocation(bestProvider);
                 if (location != null) {
                     onLocationChanged(location);
+                }else{
+                    locationManager.requestLocationUpdates(bestProvider, 0, 0, this);
                 }
-
-                locationManager.requestLocationUpdates(bestProvider, 10000, 0, this);
             } else if (extra.get("state").equals("menu")) {
                 String findId = extra.getString("restaurantId");
                 loadingTextView.setText(getResources().getString(R.string.loading_menu));
