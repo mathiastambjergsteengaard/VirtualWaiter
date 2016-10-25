@@ -1,45 +1,39 @@
 {"menu": {
-    "item":{
+    "item1":{
 		"id": "1",
-		"price":"180" ,
+		"price":"100" ,
 		"name":"Kyllingburger" ,
 		"tag":"CHICKEN",
 		"RestaurantID":"test"},
-    "item":{
+    "item2":{
 		"id": "2",
-		"price":"280" ,
+		"price":"187" ,
 		"name":"Husets burger" ,
 		"tag":"BEEF",
 		"RestaurantID":"test"},
-    "item":{
+    "item3":{
 		"id": "3",
 		"price":"550" ,
-		"name":"Rødvin" ,
+		"name":"Hvidvin" ,
 		"tag":"ALCOHOLICDRINK",
 		"RestaurantID":"test"},
     "item4":{
 		"id": "4",
-		"price":"55" ,
-		"name":"Royal Classic" ,
+		"price":"750" ,
+		"name":"Champagne" ,
 		"tag":"ALCOHOLICDRINK",
 		"RestaurantID":"test"},    
 
     "item5":{
 		"id": "5",
-		"price":"20" ,
+		"price":"90" ,
 		"name":"Mineralvand" ,
 		"tag":"SOFTDRINK",
 		"RestaurantID":"test"},    
     "item6":{
 		"id": "6",
 		"price":"110" ,
-		"name":"Smoothie" ,
-		"tag":"SOFTDRINK",
-		"RestaurantID":"test"},
-	"item7":{
-		"id": "7",
-		"price":"150" ,
-		"name":"Bøf sandwich" ,
-		"tag":"BEEF",
+		"name":"Pasta med trøffel" ,
+		"tag":"PORK",
 		"RestaurantID":"test"}
 }}    
