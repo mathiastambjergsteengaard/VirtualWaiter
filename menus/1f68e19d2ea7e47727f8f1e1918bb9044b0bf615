@@ -2,7 +2,7 @@
     "item1":{
 		"id": "1",
 		"price":"100" ,
-		"name":"Kyllingburger" ,
+		"name":"Hawaii Pizza" ,
 		"tag":"CHICKEN",
 		"RestaurantID":"test"},
     "item2":{
